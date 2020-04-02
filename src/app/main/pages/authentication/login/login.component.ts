@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { FuseConfigService } from "@fuse/services/config.service";
 import { fuseAnimations } from "@fuse/animations";
 import { AuthService } from "app/services/auth.service";
+import { Router } from "@angular/router";
+import { AlertService } from "app/services/alert.service";
 
 @Component({
     selector: "login",
@@ -24,7 +26,9 @@ export class LoginComponent implements OnInit {
     constructor(
         private _fuseConfigService: FuseConfigService,
         private _formBuilder: FormBuilder,
-        private authService: AuthService
+        private authService: AuthService,
+        private router: Router,
+        private alert: AlertService
     ) {
         // Configure the layout
         this._fuseConfigService.config = {
@@ -61,6 +65,19 @@ export class LoginComponent implements OnInit {
 
     //Own function
     login() {
-        this.authService.test();
+        this.authService.login(this.loginForm.value).subscribe(
+            next => {
+                this.alert.Success("Login Success", "");
+            },
+            error => {
+                this.alert.Error(
+                    "Login Failed",
+                    "Please check your username and password."
+                );
+            },
+            () => {
+                this.router.navigate(["/apps"]);
+            }
+        );
     }
 }
