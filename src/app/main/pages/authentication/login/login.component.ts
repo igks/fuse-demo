@@ -70,10 +70,7 @@ export class LoginComponent implements OnInit {
                 this.alert.Success("Login Success", "");
             },
             error => {
-                this.alert.Error(
-                    "Login Failed",
-                    "Please check your username and password."
-                );
+                this.alert.Error(error.statusText, "");
             },
             () => {
                 this.router.navigate(["/apps"]);

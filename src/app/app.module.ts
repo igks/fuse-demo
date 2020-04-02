@@ -20,35 +20,44 @@ import {
 
 import { fuseConfig } from "app/fuse-config";
 
-import { FakeDbService } from "app/fake-db/fake-db.service";
 import { AppComponent } from "app/app.component";
 import { AppStoreModule } from "app/store/store.module";
 import { LayoutModule } from "app/layout/layout.module";
 import { LoginModule } from "./main/pages/authentication/login/login.module";
 import { AuthService } from "./services/auth.service";
+import { AuthGuard } from "./guards/auth.guard";
+import { FakeDbService } from "./fake-db/fake-db.service";
+import { ToastrModule } from "ngx-toastr";
+import { MatDialogModule } from "@angular/material/dialog";
+import { ConfirmDialogModule } from "./layout/components/confirm-dialog/confirm-dialog.module";
 
 const appRoutes: Routes = [
     {
         path: "apps",
-        loadChildren: "./main/apps/apps.module#AppsModule"
+        loadChildren: "./main/apps/apps.module#AppsModule",
+        canActivate: [AuthGuard]
     },
     {
         path: "pages",
-        loadChildren: "./main/pages/pages.module#PagesModule"
+        loadChildren: "./main/pages/pages.module#PagesModule",
+        canActivate: [AuthGuard]
     },
     {
         path: "ui",
-        loadChildren: "./main/ui/ui.module#UIModule"
+        loadChildren: "./main/ui/ui.module#UIModule",
+        canActivate: [AuthGuard]
     },
     {
         path: "documentation",
         loadChildren:
-            "./main/documentation/documentation.module#DocumentationModule"
+            "./main/documentation/documentation.module#DocumentationModule",
+        canActivate: [AuthGuard]
     },
     {
         path: "angular-material-elements",
         loadChildren:
-            "./main/angular-material-elements/angular-material-elements.module#AngularMaterialElementsModule"
+            "./main/angular-material-elements/angular-material-elements.module#AngularMaterialElementsModule",
+        canActivate: [AuthGuard]
     },
     {
         path: "**",
@@ -59,6 +68,7 @@ const appRoutes: Routes = [
 @NgModule({
     declarations: [AppComponent],
     imports: [
+        ToastrModule.forRoot(),
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
@@ -76,6 +86,7 @@ const appRoutes: Routes = [
         // Material
         MatButtonModule,
         MatIconModule,
+        MatDialogModule,
 
         // Fuse modules
         FuseModule.forRoot(fuseConfig),
@@ -87,7 +98,8 @@ const appRoutes: Routes = [
         // App modules
         LayoutModule,
         AppStoreModule,
-        LoginModule
+        LoginModule,
+        ConfirmDialogModule
     ],
     bootstrap: [AppComponent],
     providers: [AuthService]
