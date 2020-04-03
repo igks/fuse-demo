@@ -44,11 +44,13 @@
             <div fxLayout="column">
                 <button
                     mat-raised-button
-                    class="add-product-button mt-24 mt-md-0 fuse-white"
+                    class="mt-24 mt-md-0"
+                    [ngClass]="{ 'orange-bg fuse-white-fg': isFiltered }"
+                    [ngClass]="{ 'fuse-white': !isFiltered }"
+                    (click)="isFiltered ? clearFilter() : setShowFilterForm()"
                 >
                     {{ !isFiltered ? "ADD FILTER" : "CLEAR FILTER" }}
                 </button>
-                <small *ngIf="isFiltered" class="warn-fg">Filter active</small>
             </div>
 
             <!-- / ADD FILTER BUTTON -->
@@ -96,13 +98,23 @@
                     class="h2 mb-24"
                 >
                     <h2>Add filter in below field</h2>
-                    <button
-                        mat-raised-button
-                        class="add-product-button mt-24 mt-md-0 accent-bg fuse-white-fg"
-                        (click)="addFilter()"
-                    >
-                        SET FILTER
-                    </button>
+                    <div>
+                        <button
+                            mat-raised-button
+                            class="add-product-button mt-24 mt-md-0 mr-8"
+                            (click)="cancelFilter()"
+                        >
+                            CANCEL
+                        </button>
+
+                        <button
+                            mat-raised-button
+                            class="add-product-button mt-24 mt-md-0 ml-8 accent-bg fuse-white-fg"
+                            (click)="addFilter()"
+                        >
+                            SET FILTER
+                        </button>
+                    </div>
                 </div>
 
                 <div

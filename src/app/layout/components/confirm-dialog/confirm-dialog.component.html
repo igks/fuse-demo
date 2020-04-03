@@ -2,7 +2,11 @@
 <div mat-dialog-content>The data will be delete and can't be undo!</div>
 <div mat-dialog-actions class="pt-24">
     <button mat-button (click)="cancel()">Cancel</button>
-    <button mat-raised-button class="red-bg mr-16" (click)="confirm()">
+    <button
+        mat-raised-button
+        class="accent-bg fuse-white-fg mr-16"
+        (click)="confirm()"
+    >
         Delete
     </button>
 </div>

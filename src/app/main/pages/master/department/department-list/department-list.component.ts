@@ -7,7 +7,7 @@ import { Pagination, PaginatedResult } from "app/models/pagination.model";
 import { DepartmentService } from "app/services/department.service";
 import { AlertService } from "app/services/alert.service";
 import { fuseAnimations } from "@fuse/animations";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
     selector: "app-department-list",
@@ -92,12 +92,31 @@ export class DepartmentListComponent implements OnInit {
 
     addFilter() {
         this.showFilterForm = false;
-        this.isFiltered = true;
-        console.log(this.form.value);
+        if (
+            (this.form.value.code != null && this.form.value.code != "") ||
+            (this.form.value.name != null && this.form.value.name != "")
+        ) {
+            this.isFiltered = true;
+            this.pagination.currentPage = 1;
+            this.departmentParams.code = this.form.value.code;
+            this.departmentParams.name = this.form.value.name;
+            this.loadDepartment();
+        }
+    }
+
+    cancelFilter() {
+        this.form.reset();
+        this.isFiltered = false;
+        this.showFilterForm = false;
     }
 
     clearFilter() {
-        console.log("clear filter");
+        this.isFiltered = false;
+        this.pagination.currentPage = 1;
+        this.departmentParams.code = null;
+        this.departmentParams.name = null;
+        this.form.reset();
+        this.loadDepartment();
     }
 
     deleteDepartment(id: number) {
