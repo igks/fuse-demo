@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RouterModule, Routes } from "@angular/router";
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
@@ -30,6 +30,8 @@ import { FakeDbService } from "./fake-db/fake-db.service";
 import { ToastrModule } from "ngx-toastr";
 import { MatDialogModule } from "@angular/material/dialog";
 import { ConfirmDialogModule } from "./layout/components/confirm-dialog/confirm-dialog.module";
+import { MasterModule } from "./main/pages/master/master.module";
+import { AuthInterceptor } from "./services/auth.interceptor";
 
 const appRoutes: Routes = [
     {
@@ -99,9 +101,13 @@ const appRoutes: Routes = [
         LayoutModule,
         AppStoreModule,
         LoginModule,
-        ConfirmDialogModule
+        ConfirmDialogModule,
+        MasterModule
     ],
     bootstrap: [AppComponent],
-    providers: [AuthService]
+    providers: [
+        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+        AuthService
+    ]
 })
 export class AppModule {}
