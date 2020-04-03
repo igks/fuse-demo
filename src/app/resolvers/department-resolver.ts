@@ -49,3 +49,22 @@ export class DepartmentDetailResolver implements Resolve<Department> {
         );
     }
 }
+
+@Injectable()
+export class DepartmentReportResolver implements Resolve<Department[]> {
+    constructor(
+        private departmentService: DepartmentService,
+        private router: Router,
+        private alert: AlertService
+    ) {}
+
+    resolve(route: ActivatedRouteSnapshot): Observable<Department[]> {
+        return this.departmentService.getDepartmentReport().pipe(
+            catchError(error => {
+                this.alert.Error("", error);
+                this.router.navigate(["/pages/master/department"]);
+                return of(null);
+            })
+        );
+    }
+}

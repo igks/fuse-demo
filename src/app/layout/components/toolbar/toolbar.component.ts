@@ -15,8 +15,7 @@ import { AlertService } from "app/services/alert.service";
 @Component({
     selector: "toolbar",
     templateUrl: "./toolbar.component.html",
-    styleUrls: ["./toolbar.component.scss"],
-    encapsulation: ViewEncapsulation.None
+    styleUrls: ["./toolbar.component.scss"]
 })
 export class ToolbarComponent implements OnInit, OnDestroy {
     horizontalNavbar: boolean;
@@ -167,6 +166,10 @@ export class ToolbarComponent implements OnInit, OnDestroy {
         this._translateService.use(lang.id);
     }
 
+    toHome() {
+        this.router.navigate(["/apps"]);
+    }
+
     logout() {
         localStorage.removeItem("token");
         localStorage.removeItem("username");
@@ -174,6 +177,6 @@ export class ToolbarComponent implements OnInit, OnDestroy {
             "Logout Success",
             "You have been logout from the application."
         );
-        this.router.navigate(["/"]);
+        this.router.navigate(["/auth/login"]);
     }
 }

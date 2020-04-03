@@ -32,6 +32,7 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { ConfirmDialogModule } from "./layout/components/confirm-dialog/confirm-dialog.module";
 import { MasterModule } from "./main/pages/master/master.module";
 import { AuthInterceptor } from "./services/auth.interceptor";
+import { ReportModule } from "./main/pages/reports/report.module";
 
 const appRoutes: Routes = [
     {
@@ -102,7 +103,8 @@ const appRoutes: Routes = [
         AppStoreModule,
         LoginModule,
         ConfirmDialogModule,
-        MasterModule
+        MasterModule,
+        ReportModule
     ],
     bootstrap: [AppComponent],
     providers: [

@@ -29,9 +29,14 @@
                         ],
                         "styles": [
                             "src/styles.scss",
-                            "node_modules/ngx-toastr/toastr.css"
+                            "node_modules/ngx-toastr/toastr.css",
+                            "node_modules/stimulsoft-reports-js/Css/stimulsoft.viewer.office2013.whiteblue.css"
                         ],
-                        "scripts": [],
+                        "scripts": [
+                            "node_modules/stimulsoft-reports-js/Scripts/stimulsoft.reports.js",
+                            "node_modules/stimulsoft-reports-js/Scripts/stimulsoft.reports.maps.js",
+                            "node_modules/stimulsoft-reports-js/Scripts/stimulsoft.viewer.js"
+                        ],
                         "showCircularDependencies": false
                     },
                     "configurations": {

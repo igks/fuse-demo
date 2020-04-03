@@ -22,8 +22,6 @@ import { SearchClassicModule } from "app/main/pages/search/classic/search-classi
 import { SearchModernModule } from "app/main/pages/search/modern/search-modern.module";
 import { FaqModule } from "app/main/pages/faq/faq.module";
 import { KnowledgeBaseModule } from "app/main/pages/knowledge-base/knowledge-base.module";
-import { MasterModule } from "./master/master.module";
-import { ReportModule } from "./reports/report.module";
 
 @NgModule({
     imports: [
@@ -67,8 +65,7 @@ import { ReportModule } from "./reports/report.module";
         FaqModule,
 
         // Knowledge base
-        KnowledgeBaseModule,
-        MasterModule
+        KnowledgeBaseModule
     ]
 })
 export class PagesModule {}

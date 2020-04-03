@@ -49,7 +49,10 @@
                     [ngClass]="{ 'fuse-white': !isFiltered }"
                     (click)="isFiltered ? clearFilter() : setShowFilterForm()"
                 >
-                    {{ !isFiltered ? "ADD FILTER" : "CLEAR FILTER" }}
+                    <mat-icon class="mr-8">filter_list</mat-icon>
+                    <span>{{
+                        !isFiltered ? "ADD FILTER" : "CLEAR FILTER"
+                    }}</span>
                 </button>
             </div>
 
@@ -61,6 +64,7 @@
                 [routerLink]="['/pages/master/department/form']"
                 class="add-product-button fuse-white mt-24 mt-md-0"
             >
+                <mat-icon class="mr-8">add_box</mat-icon>
                 <span>ADD NEW RECORD</span>
             </button>
             <!-- / ADD BUTTON -->
@@ -68,9 +72,10 @@
             <!-- Print Button -->
             <button
                 mat-raised-button
-                [routerLink]="['pages/report/department']"
+                [routerLink]="['/pages/report/department']"
                 class="add-product-button fuse-white mt-24 mt-md-0"
             >
+                <mat-icon class="mr-8">print</mat-icon>
                 <span>PRINT</span>
             </button>
             <!-- End Print Button -->
@@ -104,7 +109,8 @@
                             class="add-product-button mt-24 mt-md-0 mr-8"
                             (click)="cancelFilter()"
                         >
-                            CANCEL
+                            <mat-icon class="mr-8">cancel</mat-icon>
+                            <span>CANCEL</span>
                         </button>
 
                         <button
@@ -112,7 +118,10 @@
                             class="add-product-button mt-24 mt-md-0 ml-8 accent-bg fuse-white-fg"
                             (click)="addFilter()"
                         >
-                            SET FILTER
+                            <mat-icon class="mr-8"
+                                >check_circle_outline</mat-icon
+                            >
+                            <span>SET FILTER</span>
                         </button>
                     </div>
                 </div>

@@ -16,7 +16,6 @@ import { MatTabsModule } from "@angular/material/tabs";
 import { NgxChartsModule } from "@swimlane/ngx-charts";
 import { AgmCoreModule } from "@agm/core";
 import { MatMenuModule } from "@angular/material/menu";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { FuseSharedModule } from "@fuse/shared.module";
 import { FuseWidgetModule } from "@fuse/components/widget/widget.module";
@@ -32,23 +31,23 @@ import { DepartmentFormComponent } from "./department/department-form/department
 
 const routes: Routes = [
     {
-        path: "",
+        path: "pages",
         runGuardsAndResolvers: "always",
         canActivate: [AuthGuard],
         children: [
             {
-                path: "pages/master/department",
+                path: "master/department",
                 component: DepartmentListComponent,
                 resolve: {
                     department: DepartmentListResolver
                 }
             },
             {
-                path: "pages/master/department/form",
+                path: "master/department/form",
                 component: DepartmentFormComponent
             },
             {
-                path: "pages/master/department/form/:id",
+                path: "master/department/form/:id",
                 component: DepartmentFormComponent,
                 resolve: {
                     department: DepartmentDetailResolver
@@ -61,7 +60,6 @@ const routes: Routes = [
 @NgModule({
     declarations: [DepartmentListComponent, DepartmentFormComponent],
     imports: [
-        BrowserAnimationsModule,
         RouterModule.forChild(routes),
         MatButtonModule,
         MatChipsModule,
