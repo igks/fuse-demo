@@ -15,7 +15,7 @@
         >
             <!-- APP TITLE -->
             <div
-                class="logo mb-24 mb-md-0"
+                class="logo mb-md-0"
                 fxLayout="row"
                 fxLayoutAlign="start center"
             >
@@ -39,12 +39,33 @@
                 </span>
             </div>
             <!-- / APP TITLE -->
+        </div>
+        <!-- / HEADER -->
 
-            <!-- ADD FILTER BUTTON -->
-            <div fxLayout="column">
+        <div
+            fxLayoutAlign="center center"
+            fxLayout.gt-xs="row"
+            fxLayoutAlign.gt-xs="space-between center"
+            class="mb-8"
+        >
+            <div>
+                <!-- ADD BUTTON -->
                 <button
                     mat-raised-button
-                    class="mt-24 mt-md-0"
+                    [routerLink]="['/pages/master/department/form']"
+                    class="add-product-button"
+                >
+                    <mat-icon class="mr-8">add_box</mat-icon>
+                    <span>ADD NEW RECORD</span>
+                </button>
+                <!-- / ADD BUTTON -->
+            </div>
+
+            <div fxLayout="row">
+                <!-- ADD FILTER BUTTON -->
+                <button
+                    mat-raised-button
+                    class="mr-8"
                     [ngClass]="{ 'orange-bg fuse-white-fg': isFiltered }"
                     [ngClass]="{ 'fuse-white': !isFiltered }"
                     (click)="isFiltered ? clearFilter() : setShowFilterForm()"
@@ -54,33 +75,20 @@
                         !isFiltered ? "ADD FILTER" : "CLEAR FILTER"
                     }}</span>
                 </button>
+                <!-- / ADD FILTER BUTTON -->
+
+                <!-- Print Button -->
+                <button
+                    mat-raised-button
+                    [routerLink]="['/pages/report/department']"
+                    class="add-product-button"
+                >
+                    <mat-icon class="mr-8">print</mat-icon>
+                    <span>PRINT</span>
+                </button>
+                <!-- End Print Button -->
             </div>
-
-            <!-- / ADD FILTER BUTTON -->
-
-            <!-- ADD BUTTON -->
-            <button
-                mat-raised-button
-                [routerLink]="['/pages/master/department/form']"
-                class="add-product-button fuse-white mt-24 mt-md-0"
-            >
-                <mat-icon class="mr-8">add_box</mat-icon>
-                <span>ADD NEW RECORD</span>
-            </button>
-            <!-- / ADD BUTTON -->
-
-            <!-- Print Button -->
-            <button
-                mat-raised-button
-                [routerLink]="['/pages/report/department']"
-                class="add-product-button fuse-white mt-24 mt-md-0"
-            >
-                <mat-icon class="mr-8">print</mat-icon>
-                <span>PRINT</span>
-            </button>
-            <!-- End Print Button -->
         </div>
-        <!-- / HEADER -->
 
         <div
             *ngIf="showFilterForm"
