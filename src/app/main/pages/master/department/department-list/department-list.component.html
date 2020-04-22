@@ -1,6 +1,6 @@
 <div id="products" class="page-layout carded fullwidth inner-scroll">
     <!-- TOP BACKGROUND -->
-    <div class="top-bg accent"></div>
+    <div class="accent top-bg" style="height: 300px !important;"></div>
     <!-- / TOP BACKGROUND -->
 
     <!-- CENTER -->
@@ -92,29 +92,28 @@
 
         <div
             *ngIf="showFilterForm"
-            class="content-card my-12"
+            class="content-card my-8"
             fusePerfectScrollbar
         >
             <form
-                class="mat-card mat-elevation-z4 p-24 mr-24"
                 fxLayout="column"
-                fxLayoutAlign="start"
-                fxFlex="1 0 auto"
+                class="mat-card"
                 name="form"
                 [formGroup]="form"
+                class="px-28"
             >
                 <div
                     fxLayout="column"
                     fxLayoutAlign="center center"
                     fxLayout.gt-xs="row"
+                    fxFlex="1 0 auto"
                     fxLayoutAlign.gt-xs="space-between center"
-                    class="h2 mb-24"
                 >
-                    <h2>Add filter in below field</h2>
-                    <div>
+                    <!-- <h2>Add filter</h2> -->
+                    <div class="mt-12 mb-8">
                         <button
                             mat-raised-button
-                            class="add-product-button mt-24 mt-md-0 mr-8"
+                            class="add-product-button mt-md-0 mr-8"
                             (click)="cancelFilter()"
                         >
                             <mat-icon class="mr-8">cancel</mat-icon>
@@ -123,7 +122,7 @@
 
                         <button
                             mat-raised-button
-                            class="add-product-button mt-24 mt-md-0 ml-8 accent-bg fuse-white-fg"
+                            class="add-product-button mt-md-0 ml-8 accent-bg fuse-white-fg"
                             (click)="addFilter()"
                         >
                             <mat-icon class="mr-8"
@@ -138,19 +137,14 @@
                     fxLayout="row"
                     fxLayoutAlign="start center"
                     fxFlex="1 0 auto"
+                    fxLayoutAlign.gt-xs="start center"
                 >
-                    <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-form-field class="mr-16">
                         <mat-label>Filter by code</mat-label>
                         <input matInput formControlName="code" />
                     </mat-form-field>
-                </div>
 
-                <div
-                    fxLayout="row"
-                    fxLayoutAlign="start center"
-                    fxFlex="1 0 auto"
-                >
-                    <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-form-field class="mr-16">
                         <mat-label>Filter by name</mat-label>
                         <input matInput formControlName="name" />
                     </mat-form-field>
@@ -159,7 +153,7 @@
         </div>
 
         <!-- CONTENT CARD -->
-        <div class="content-card">
+        <div *ngIf="!showFilterForm" class="content-card">
             <mat-table
                 class="products-table"
                 #table
@@ -172,7 +166,10 @@
             >
                 <!-- Code Column -->
                 <ng-container matColumnDef="code">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header
+                    <mat-header-cell
+                        *matHeaderCellDef
+                        mat-sort-header
+                        class="text-header accent-fg"
                         >Code</mat-header-cell
                     >
                     <mat-cell *matCellDef="let departments">
@@ -182,7 +179,10 @@
 
                 <!-- Name Column -->
                 <ng-container matColumnDef="name">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header
+                    <mat-header-cell
+                        *matHeaderCellDef
+                        mat-sort-header
+                        class="text-header accent-fg"
                         >Name</mat-header-cell
                     >
                     <mat-cell *matCellDef="let departments">
@@ -192,7 +192,11 @@
 
                 <!-- Buttons Column -->
                 <ng-container matColumnDef="buttons">
-                    <mat-header-cell *matHeaderCellDef>Option</mat-header-cell>
+                    <mat-header-cell
+                        *matHeaderCellDef
+                        class="text-header accent-fg"
+                        >Option</mat-header-cell
+                    >
                     <mat-cell *matCellDef="let departments">
                         <div fxFlex="row" fxLayoutAlign="start center">
                             <button
