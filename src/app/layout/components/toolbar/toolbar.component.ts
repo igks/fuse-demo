@@ -15,7 +15,8 @@ import { AlertService } from "app/services/alert.service";
 @Component({
     selector: "toolbar",
     templateUrl: "./toolbar.component.html",
-    styleUrls: ["./toolbar.component.scss"]
+    styleUrls: ["./toolbar.component.scss"],
+    encapsulation: ViewEncapsulation.None,
 })
 export class ToolbarComponent implements OnInit, OnDestroy {
     horizontalNavbar: boolean;
@@ -51,41 +52,41 @@ export class ToolbarComponent implements OnInit, OnDestroy {
             {
                 title: "Online",
                 icon: "icon-checkbox-marked-circle",
-                color: "#4CAF50"
+                color: "#4CAF50",
             },
             {
                 title: "Away",
                 icon: "icon-clock",
-                color: "#FFC107"
+                color: "#FFC107",
             },
             {
                 title: "Do not Disturb",
                 icon: "icon-minus-circle",
-                color: "#F44336"
+                color: "#F44336",
             },
             {
                 title: "Invisible",
                 icon: "icon-checkbox-blank-circle-outline",
-                color: "#BDBDBD"
+                color: "#BDBDBD",
             },
             {
                 title: "Offline",
                 icon: "icon-checkbox-blank-circle-outline",
-                color: "#616161"
-            }
+                color: "#616161",
+            },
         ];
 
         this.languages = [
             {
                 id: "en",
                 title: "English",
-                flag: "us"
+                flag: "us",
             },
             {
                 id: "tr",
                 title: "Turkish",
-                flag: "tr"
-            }
+                flag: "tr",
+            },
         ];
 
         this.navigation = navigation;
@@ -105,7 +106,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
         // Subscribe to the config changes
         this._fuseConfigService.config
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe(settings => {
+            .subscribe((settings) => {
                 this.horizontalNavbar =
                     settings.layout.navbar.position === "top";
                 this.rightNavbar = settings.layout.navbar.position === "right";
@@ -114,7 +115,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 
         // Set the selected language from default languages
         this.selectedLanguage = _.find(this.languages, {
-            id: this._translateService.currentLang
+            id: this._translateService.currentLang,
         });
 
         // authentication check
