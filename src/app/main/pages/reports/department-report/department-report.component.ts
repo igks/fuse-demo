@@ -8,7 +8,6 @@ declare var Stimulsoft: any;
     selector: "app-department-report",
     templateUrl: "./department-report.component.html",
     styleUrls: ["./department-report.component.css"],
-    encapsulation: ViewEncapsulation.None
 })
 export class DepartmentReportComponent implements OnInit {
     departments: Department[];
@@ -16,7 +15,7 @@ export class DepartmentReportComponent implements OnInit {
     constructor(private route: ActivatedRoute) {}
 
     ngOnInit() {
-        this.route.data.subscribe(data => {
+        this.route.data.subscribe((data) => {
             this.departments = data.departments;
         });
 
@@ -31,9 +30,9 @@ export class DepartmentReportComponent implements OnInit {
         report.regData("Department", "Department", this.departments);
 
         options.width = "100%";
-        options.height = "850px";
+        options.height = "800px";
         options.appearance.scrollbarsMode = true;
-        options.appearance.fullScreenMode = true;
+        // options.appearance.fullScreenMode = true;
 
         const viewer = new Stimulsoft.Viewer.StiViewer(
             options,
