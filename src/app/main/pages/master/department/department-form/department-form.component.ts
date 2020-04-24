@@ -11,7 +11,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
     templateUrl: "./department-form.component.html",
     styleUrls: ["./department-form.component.scss"],
     animations: fuseAnimations,
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
 })
 export class DepartmentFormComponent implements OnInit {
     id = +this.route.snapshot.params.id;
@@ -31,7 +31,7 @@ export class DepartmentFormComponent implements OnInit {
     ngOnInit() {
         this.form = this.formBuilder.group({
             code: ["", [Validators.required]],
-            name: ["", [Validators.required]]
+            name: ["", [Validators.required]],
         });
 
         this.checkUpdate();
@@ -40,13 +40,13 @@ export class DepartmentFormComponent implements OnInit {
     checkUpdate() {
         if (this.id) {
             this.isUpdate = true;
-            this.route.data.subscribe(data => {
+            this.route.data.subscribe((data) => {
                 this.department = data.department;
             });
 
             this.form.setValue({
                 code: this.department.code,
-                name: this.department.name
+                name: this.department.name,
             });
         }
     }
@@ -69,7 +69,7 @@ export class DepartmentFormComponent implements OnInit {
                 );
                 this.router.navigate(["pages/master/department"]);
             },
-            error => {
+            (error) => {
                 this.alert.Error("", error);
             }
         );
@@ -87,7 +87,7 @@ export class DepartmentFormComponent implements OnInit {
                     );
                     this.router.navigate(["pages/master/department"]);
                 },
-                error => {
+                (error) => {
                     this.alert.Error("", error);
                 }
             );

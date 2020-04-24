@@ -1,6 +1,6 @@
-<div id="products" class="page-layout carded fullwidth inner-scroll">
+<div id="my-container" class="page-layout carded fullwidth inner-scroll">
     <!-- TOP BACKGROUND -->
-    <div class="accent top-bg" style="height: 300px !important;"></div>
+    <div class="accent top-bg"></div>
     <!-- / TOP BACKGROUND -->
 
     <!-- CENTER -->
@@ -176,7 +176,7 @@
             class="content-card"
         >
             <mat-table
-                class="products-table"
+                class="custom-table"
                 #table
                 [dataSource]="departments"
                 matSort
@@ -262,8 +262,8 @@
                 ></mat-header-row>
 
                 <mat-row
-                    *matRowDef="let product; columns: displayedColumns"
-                    class="product"
+                    *matRowDef="let data; columns: displayedColumns"
+                    class="data"
                     matRipple
                 >
                 </mat-row>
