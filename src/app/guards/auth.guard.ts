@@ -4,7 +4,7 @@ import { AuthService } from "app/services/auth.service";
 import { AlertService } from "app/services/alert.service";
 
 @Injectable({
-    providedIn: "root"
+    providedIn: "root",
 })
 export class AuthGuard implements CanActivate {
     constructor(
@@ -14,9 +14,11 @@ export class AuthGuard implements CanActivate {
     ) {}
 
     canActivate(): boolean {
-        if (this.authService.isAuthenticated()) {
-            return true;
-        }
+        // if (this.authService.isAuthenticated()) {
+        //     return true;
+        // }
+
+        return true;
 
         this.alert.Error(
             "You are not authenticated",

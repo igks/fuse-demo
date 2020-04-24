@@ -30,7 +30,7 @@ export class DepartmentReportComponent implements OnInit {
         report.regData("Department", "Department", this.departments);
 
         options.width = "100%";
-        options.height = "800px";
+        options.height = "750px";
         options.appearance.scrollbarsMode = true;
         // options.appearance.fullScreenMode = true;
 

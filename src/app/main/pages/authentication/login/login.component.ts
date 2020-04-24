@@ -12,7 +12,7 @@ import { AlertService } from "app/services/alert.service";
     templateUrl: "./login.component.html",
     styleUrls: ["./login.component.scss"],
     encapsulation: ViewEncapsulation.None,
-    animations: fuseAnimations
+    animations: fuseAnimations,
 })
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
@@ -34,18 +34,18 @@ export class LoginComponent implements OnInit {
         this._fuseConfigService.config = {
             layout: {
                 navbar: {
-                    hidden: true
+                    hidden: true,
                 },
                 toolbar: {
-                    hidden: true
+                    hidden: true,
                 },
                 footer: {
-                    hidden: true
+                    hidden: true,
                 },
                 sidepanel: {
-                    hidden: true
-                }
-            }
+                    hidden: true,
+                },
+            },
         };
     }
 
@@ -59,22 +59,25 @@ export class LoginComponent implements OnInit {
     ngOnInit(): void {
         this.loginForm = this._formBuilder.group({
             username: ["", Validators.required],
-            password: ["", Validators.required]
+            password: ["", Validators.required],
         });
     }
 
     //Own function
     login() {
-        this.authService.login(this.loginForm.value).subscribe(
-            next => {
-                this.alert.Success("Login Success", "");
-            },
-            error => {
-                this.alert.Error(error.statusText, "");
-            },
-            () => {
-                this.router.navigate(["/apps"]);
-            }
-        );
+        this.alert.Success("Login Success", "");
+        this.router.navigate(["/apps"]);
+
+        // this.authService.login(this.loginForm.value).subscribe(
+        //     next => {
+        //         this.alert.Success("Login Success", "");
+        //     },
+        //     error => {
+        //         this.alert.Error(error.statusText, "");
+        //     },
+        //     () => {
+        //         this.router.navigate(["/apps"]);
+        //     }
+        // );
     }
 }

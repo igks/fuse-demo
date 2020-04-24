@@ -15,7 +15,7 @@ import { FuseSharedModule } from "@fuse/shared.module";
 import {
     FuseProgressBarModule,
     FuseSidebarModule,
-    FuseThemeOptionsModule
+    FuseThemeOptionsModule,
 } from "@fuse/components";
 
 import { fuseConfig } from "app/fuse-config";
@@ -38,34 +38,34 @@ const appRoutes: Routes = [
     {
         path: "apps",
         loadChildren: "./main/apps/apps.module#AppsModule",
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
     },
     {
         path: "pages",
         loadChildren: "./main/pages/pages.module#PagesModule",
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
     },
     {
         path: "ui",
         loadChildren: "./main/ui/ui.module#UIModule",
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
     },
     {
         path: "documentation",
         loadChildren:
             "./main/documentation/documentation.module#DocumentationModule",
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
     },
     {
         path: "angular-material-elements",
         loadChildren:
             "./main/angular-material-elements/angular-material-elements.module#AngularMaterialElementsModule",
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
     },
     {
         path: "**",
-        redirectTo: "auth/login"
-    }
+        redirectTo: "auth/login",
+    },
 ];
 
 @NgModule({
@@ -80,7 +80,7 @@ const appRoutes: Routes = [
         TranslateModule.forRoot(),
         InMemoryWebApiModule.forRoot(FakeDbService, {
             delay: 0,
-            passThruUnknownUrl: true
+            passThruUnknownUrl: true,
         }),
 
         // Material moment date module
@@ -104,12 +104,12 @@ const appRoutes: Routes = [
         LoginModule,
         ConfirmDialogModule,
         MasterModule,
-        ReportModule
+        ReportModule,
     ],
     bootstrap: [AppComponent],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-        AuthService
-    ]
+        AuthService,
+    ],
 })
 export class AppModule {}

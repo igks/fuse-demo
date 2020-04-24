@@ -141,19 +141,40 @@
                 >
                     <mat-form-field class="mr-16">
                         <mat-label>Filter by code</mat-label>
-                        <input matInput formControlName="code" />
+                        <input
+                            matInput
+                            formControlName="code"
+                            autocomplete="off"
+                        />
                     </mat-form-field>
 
                     <mat-form-field class="mr-16">
                         <mat-label>Filter by name</mat-label>
-                        <input matInput formControlName="name" />
+                        <input
+                            matInput
+                            formControlName="name"
+                            autocomplete="off"
+                        />
                     </mat-form-field>
                 </div>
             </form>
         </div>
 
         <!-- CONTENT CARD -->
-        <div *ngIf="!showFilterForm" class="content-card">
+        <div
+            *ngIf="!showFilterForm && departments.length == 0"
+            class="content-card"
+            fxLayout="row"
+            fxLayoutAlign="center center"
+            fxFlex="1 0 auto"
+            fxLayoutAlign.gt-xs="center center"
+        >
+            <h2>No Data Available...</h2>
+        </div>
+        <div
+            *ngIf="!showFilterForm && departments.length != 0"
+            class="content-card"
+        >
             <mat-table
                 class="products-table"
                 #table
