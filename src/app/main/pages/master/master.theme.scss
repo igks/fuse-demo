@@ -1,4 +1,4 @@
-@mixin my-custom-theme($theme) {
+@mixin master-theme($theme) {
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
 

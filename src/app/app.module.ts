@@ -30,36 +30,12 @@ import { FakeDbService } from "./fake-db/fake-db.service";
 import { ToastrModule } from "ngx-toastr";
 import { MatDialogModule } from "@angular/material/dialog";
 import { ConfirmDialogModule } from "./layout/components/confirm-dialog/confirm-dialog.module";
-import { MasterModule } from "./main/pages/master/master.module";
 import { AuthInterceptor } from "./services/auth.interceptor";
-import { ReportModule } from "./main/pages/reports/report.module";
 
 const appRoutes: Routes = [
     {
-        path: "apps",
-        loadChildren: "./main/apps/apps.module#AppsModule",
-        canActivate: [AuthGuard],
-    },
-    {
         path: "pages",
         loadChildren: "./main/pages/pages.module#PagesModule",
-        canActivate: [AuthGuard],
-    },
-    {
-        path: "ui",
-        loadChildren: "./main/ui/ui.module#UIModule",
-        canActivate: [AuthGuard],
-    },
-    {
-        path: "documentation",
-        loadChildren:
-            "./main/documentation/documentation.module#DocumentationModule",
-        canActivate: [AuthGuard],
-    },
-    {
-        path: "angular-material-elements",
-        loadChildren:
-            "./main/angular-material-elements/angular-material-elements.module#AngularMaterialElementsModule",
         canActivate: [AuthGuard],
     },
     {
@@ -99,12 +75,10 @@ const appRoutes: Routes = [
         FuseThemeOptionsModule,
 
         // App modules
+        LoginModule,
         LayoutModule,
         AppStoreModule,
-        LoginModule,
         ConfirmDialogModule,
-        MasterModule,
-        ReportModule,
     ],
     bootstrap: [AppComponent],
     providers: [
@@ -113,3 +87,42 @@ const appRoutes: Routes = [
     ],
 })
 export class AppModule {}
+
+// Old route
+// const appRoutes: Routes = [
+//     {
+//         path: "login",
+//         redirectTo: "auth/login",
+//     },
+//     {
+//         path: "apps",
+//         loadChildren: "./main/apps/apps.module#AppsModule",
+//         canActivate: [AuthGuard],
+//     },
+//     {
+//         path: "pages",
+//         loadChildren: "./main/pages/pages.module#PagesModule",
+//         canActivate: [AuthGuard],
+//     },
+//     {
+//         path: "ui",
+//         loadChildren: "./main/ui/ui.module#UIModule",
+//         canActivate: [AuthGuard],
+//     },
+//     {
+//         path: "documentation",
+//         loadChildren:
+//             "./main/documentation/documentation.module#DocumentationModule",
+//         canActivate: [AuthGuard],
+//     },
+//     {
+//         path: "angular-material-elements",
+//         loadChildren:
+//             "./main/angular-material-elements/angular-material-elements.module#AngularMaterialElementsModule",
+//         canActivate: [AuthGuard],
+//     },
+//     {
+//         path: "**",
+//         redirectTo: "auth/login",
+//     },
+// ];

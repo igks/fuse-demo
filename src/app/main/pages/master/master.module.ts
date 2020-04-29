@@ -22,7 +22,7 @@ import { FuseWidgetModule } from "@fuse/components/widget/widget.module";
 
 import {
     DepartmentListResolver,
-    DepartmentDetailResolver
+    DepartmentDetailResolver,
 } from "app/resolvers/department-resolver";
 import { DepartmentListComponent } from "./department/department-list/department-list.component";
 import { DepartmentService } from "app/services/department.service";
@@ -31,7 +31,7 @@ import { DepartmentFormComponent } from "./department/department-form/department
 
 const routes: Routes = [
     {
-        path: "pages",
+        path: "",
         runGuardsAndResolvers: "always",
         canActivate: [AuthGuard],
         children: [
@@ -39,22 +39,22 @@ const routes: Routes = [
                 path: "master/department",
                 component: DepartmentListComponent,
                 resolve: {
-                    department: DepartmentListResolver
-                }
+                    department: DepartmentListResolver,
+                },
             },
             {
                 path: "master/department/form",
-                component: DepartmentFormComponent
+                component: DepartmentFormComponent,
             },
             {
                 path: "master/department/form/:id",
                 component: DepartmentFormComponent,
                 resolve: {
-                    department: DepartmentDetailResolver
-                }
-            }
-        ]
-    }
+                    department: DepartmentDetailResolver,
+                },
+            },
+        ],
+    },
 ];
 
 @NgModule({
@@ -78,16 +78,16 @@ const routes: Routes = [
 
         NgxChartsModule,
         AgmCoreModule.forRoot({
-            apiKey: "AIzaSyD81ecsCj4yYpcXSLFcYU97PvRsE_X8Bx8"
+            apiKey: "AIzaSyD81ecsCj4yYpcXSLFcYU97PvRsE_X8Bx8",
         }),
 
         FuseSharedModule,
-        FuseWidgetModule
+        FuseWidgetModule,
     ],
     providers: [
         DepartmentService,
         DepartmentListResolver,
-        DepartmentDetailResolver
-    ]
+        DepartmentDetailResolver,
+    ],
 })
 export class MasterModule {}

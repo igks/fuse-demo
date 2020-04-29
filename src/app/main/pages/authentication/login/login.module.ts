@@ -13,8 +13,8 @@ import { LoginComponent } from "app/main/pages/authentication/login/login.compon
 const routes = [
     {
         path: "auth/login",
-        component: LoginComponent
-    }
+        component: LoginComponent,
+    },
 ];
 
 @NgModule({
@@ -28,7 +28,7 @@ const routes = [
         MatIconModule,
         MatInputModule,
 
-        FuseSharedModule
-    ]
+        FuseSharedModule,
+    ],
 })
 export class LoginModule {}

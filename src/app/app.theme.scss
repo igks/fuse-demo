@@ -68,7 +68,7 @@ $typography: mat-typography-config(
     $body-2: mat-typography-level(14px, 24px, 600),
     $button: mat-typography-level(14px, 14px, 600),
     $input: mat-typography-level(16px, 1.125, 400)
-        // line-height must be unitless !!!,,,,
+        // line-height must be unitless !!!,,,,,
 );
 
 // Setup the typography
@@ -119,7 +119,7 @@ $typography: mat-typography-config(
 @import "src/app/main/pages/search/modern/search-modern.theme";
 @import "src/app/main/pages/faq/faq.theme";
 @import "src/app/main/pages/knowledge-base/knowledge-base.theme";
-@import "src/app/main/pages/master/my-custom.theme";
+@import "src/app/main/pages/master/master.theme";
 
 @import "src/app/main/ui/cards/cards.theme";
 
@@ -170,7 +170,7 @@ $typography: mat-typography-config(
     @include search-modern-theme($theme);
     @include faq-theme($theme);
     @include knowledge-base-theme($theme);
-    @include my-custom-theme($theme);
+    @include master-theme($theme);
 
     // UI
     @include ui-cards-theme($theme);

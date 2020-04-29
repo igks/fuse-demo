@@ -59,13 +59,11 @@
                     <span>ADD NEW RECORD</span>
                 </button>
                 <!-- / ADD BUTTON -->
-            </div>
 
-            <div fxLayout="row">
                 <!-- ADD FILTER BUTTON -->
                 <button
                     mat-raised-button
-                    class="mr-8"
+                    class="ml-8"
                     [ngClass]="{ 'orange-bg fuse-white-fg': isFiltered }"
                     [ngClass]="{ 'fuse-white': !isFiltered }"
                     (click)="isFiltered ? clearFilter() : setShowFilterForm()"
@@ -76,7 +74,9 @@
                     }}</span>
                 </button>
                 <!-- / ADD FILTER BUTTON -->
+            </div>
 
+            <div fxLayout="row">
                 <!-- Print Button -->
                 <button
                     mat-raised-button

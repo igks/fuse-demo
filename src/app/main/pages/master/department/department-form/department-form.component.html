@@ -50,9 +50,24 @@
             name="form"
             [formGroup]="form"
         >
+            <mat-form-field appearance="outline">
+                <mat-label>Department code</mat-label>
+                <input matInput formControlName="code" autocomplete="off" />
+                <mat-error>
+                    Department code is required
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Department name</mat-label>
+                <input matInput formControlName="name" autocomplete="off" />
+                <mat-error>
+                    Department name is required
+                </mat-error>
+            </mat-form-field>
             <div
                 fxLayout="column"
-                fxLayoutAlign="end center"
+                fxLayoutAlign="start center"
                 fxLayout.gt-xs="row"
                 class="mb-12"
             >
@@ -74,22 +89,6 @@
                     <span>Save</span>
                 </button>
             </div>
-
-            <mat-form-field appearance="outline">
-                <mat-label>Department code</mat-label>
-                <input matInput formControlName="code" autocomplete="off" />
-                <mat-error>
-                    Department code is required
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline">
-                <mat-label>Department name</mat-label>
-                <input matInput formControlName="name" autocomplete="off" />
-                <mat-error>
-                    Department name is required
-                </mat-error>
-            </mat-form-field>
         </form>
     </div>
     <!-- / CENTER -->

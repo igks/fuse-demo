@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
     //Own function
     login() {
         this.alert.Success("Login Success", "");
-        this.router.navigate(["/apps"]);
+        this.router.navigate(["/pages"]);
 
         // this.authService.login(this.loginForm.value).subscribe(
         //     next => {
